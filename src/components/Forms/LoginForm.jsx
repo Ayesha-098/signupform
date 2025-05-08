@@ -1,8 +1,7 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");

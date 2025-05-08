@@ -6,11 +6,12 @@ import { UserContext } from "../../context/UserContext";
 import { validateEmail, validatePassword } from "../../utils/validation";
 
 const SignupForm = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState(localStorage.getItem("name") || "");
   const [errors, setErrors] = useState([]);
   const [typing, setTyping] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
@@ -22,15 +23,8 @@ const SignupForm = () => {
     if (password) {
       setTyping(true);
       const timer = setTimeout(() => {
-        const validationErrors = [];
-
-        if (!validatePassword(password)) {
-          validationErrors.push(
-            "Password must be at least 8 characters long, include one uppercase letter, one number, and one special character."
-          );
-        }
-
-        setErrors(validationErrors);
+        const strength = getPasswordStrength(password);
+        setPasswordStrength(strength);
         setTyping(false);
       }, 600);
 
@@ -42,7 +36,7 @@ const SignupForm = () => {
     event.preventDefault();
     const formErrors = [];
 
-    if (!email || !password || !name) formErrors.push("All fields are required");  // Check if name is filled
+    if (!email || !password || !name) formErrors.push("All fields are required");
     if (!validateEmail(email)) formErrors.push("Invalid email format");
     if (!validatePassword(password)) formErrors.push("Invalid password format");
 
@@ -51,9 +45,24 @@ const SignupForm = () => {
       return;
     }
 
-    setUser({ email, name })
+    setUser({ email, name });
     localStorage.setItem("user", JSON.stringify({ email, name }));
     navigate("/dashboard");
+  };
+
+  const getPasswordStrength = (password) => {
+    const lengthCriteria = password.length >= 8;
+    const numberCriteria = /[0-9]/.test(password);
+    const uppercaseCriteria = /[A-Z]/.test(password);
+    const specialCharacterCriteria = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (lengthCriteria && numberCriteria && uppercaseCriteria && specialCharacterCriteria) {
+      return "Strong";
+    } else if (lengthCriteria && (numberCriteria || uppercaseCriteria)) {
+      return "Medium";
+    } else {
+      return "Weak";
+    }
   };
 
   return (
@@ -82,6 +91,7 @@ const SignupForm = () => {
           {err}
         </p>
       ))}
+        <p>Password Strength: <strong>{passwordStrength}</strong></p>
       <Button type="submit">Signup</Button>
     </form>
   );
