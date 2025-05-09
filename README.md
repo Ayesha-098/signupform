@@ -37,24 +37,26 @@ This is a React-based application that provides user authentication functionalit
  - React Router DOM
 
 ## Project Structure
-/src
-  /components
-    /common
-      Button.jsx
-      Input.jsx
-    Navbar.jsx
-    Header.jsx
-    Footer.jsx
-    LoginForm.jsx
-    SignupForm.jsx
-  /context
-    UserContext.jsx
-  /utils
-    validation.js
-    useLocalStorage.js
-  App.jsx
-  index.js
-  App.css
+ /src
+   /components
+     /common
+       Button.jsx
+       Input.jsx
+       Navbar.jsx
+     /layout
+       Header.jsx
+       Footer.jsx
+     /forms
+       LoginForm.jsx
+       SignupForm.jsx
+    /context
+      UserContext.jsx
+    /utils
+      validation.js
+      useLocalStorage.js
+    App.jsx
+    index.js
+    App.css
 
 ## Usage
  - Navigate to the Signup page to create a new account
