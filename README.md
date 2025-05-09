@@ -38,25 +38,25 @@ This is a React-based application that provides user authentication functionalit
 
 ## Project Structure
  /src
-   /components
-     /common
-       Button.jsx
-       Input.jsx
-       Navbar.jsx
-     /layout
-       Header.jsx
-       Footer.jsx
-     /forms
-       LoginForm.jsx
-       SignupForm.jsx
-    /context
-      UserContext.jsx
-    /utils
-      validation.js
-      useLocalStorage.js
-    App.jsx
-    index.js
-    App.css
+├── components
+│ ├── common
+│ │ ├── Button.jsx
+│ │ ├── Input.jsx
+│ │ └── Navbar.jsx
+│ └── layout
+│ ├── Header.jsx
+│ └── Footer.jsx
+├── forms
+│ ├── LoginForm.jsx
+│ └── SignupForm.jsx
+├── context
+│ └── UserContext.jsx
+├── utils
+│ ├── validation.js
+│ └── useLocalStorage.js
+├── App.jsx
+├── index.js
+└── App.css
 
 ## Usage
  - Navigate to the Signup page to create a new account
