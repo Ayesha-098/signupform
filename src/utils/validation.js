@@ -3,7 +3,7 @@ export const validateEmail = (email) => {
     return mail.test(String(email).toLowerCase());
   };
   
-  export const validatePassword = (password) => {
+export const validatePassword = (password) => {
     const UpperCase = /[A-Z]/.test(password);
     const Number = /[0-9]/.test(password);
     const Special = /[!@#$%^&*]/.test(password);

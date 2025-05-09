@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Input from "../common/Input";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -9,9 +10,10 @@ const LoginForm = () => {
   const [typing, setTyping] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (email || password ) setTyping(true);
+    if (email || password) setTyping(true);
     const timer = setTimeout(() => setTyping(false), 1000);
     return () => clearTimeout(timer);
   }, [email, password]);
@@ -26,8 +28,24 @@ const LoginForm = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     if (!email || !password) return setError("All fields are required");
-    navigate("/dashboard");
+    
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const userData = JSON.parse(storedUser);
+      if (userData.email === email) {
+        setUser(userData);
+        navigate("/dashboard");
+        return;
+      }
+    }
+    setError("Invalid credentials");
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   return (
     <form onSubmit={handleLogin}>

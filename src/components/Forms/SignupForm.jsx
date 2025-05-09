@@ -32,6 +32,7 @@ const SignupForm = () => {
     }
   }, [password]);
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formErrors = [];
@@ -45,9 +46,14 @@ const SignupForm = () => {
       return;
     }
 
-    setUser({ email, name });
-    localStorage.setItem("user", JSON.stringify({ email, name }));
-    navigate("/dashboard");
+    const userData = { 
+    email, 
+    name,
+    password: btoa(password)
+  };
+  setUser(userData);
+  localStorage.setItem("user", JSON.stringify(userData));
+  navigate("/dashboard");
   };
 
   const getPasswordStrength = (password) => {

@@ -20,7 +20,7 @@ const Dashboard = () => {
     <div>
       <h2>Dashboard</h2>
       {user ? (
-        <>
+        <> {/* fragment */}
           <p>Welcome back, {user.name}!</p>
           <Button type="button" onClick={handleLogout}>Logout</Button> {/* Logout button */}
         </>
