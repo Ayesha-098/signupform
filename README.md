@@ -32,26 +32,11 @@ This is a React-based application that provides user authentication functionalit
 
 - **UserContext** — Manages user authentication state across the application
 
-## Installation
+## Dependencies
+ - React
+ - React Router DOM
 
-To get the project running locally:
-
-```bash
-git clone https://github.com/your-username/signup-login-app.git
-cd signup-login-app
-npm install
-npm start
-
-
-
-Dependencies
-React
-
-React Router DOM
-
-React Context API
-
-Project Structure
+## Project Structure
 /src
   /components
     /common
@@ -70,25 +55,31 @@ Project Structure
   App.jsx
   index.js
   App.css
-Usage
-Navigate to the Signup page to create a new account
 
-Fill in your details (Name, Email, Password)
+## Usage
+ - Navigate to the Signup page to create a new account
+ - Fill in your details (Name, Email, Password)
+ - The password strength indicator will show you how strong your password is
+ - After successful registration, head to the Login page
+ - Enter your credentials to access the Dashboard
 
-The password strength indicator will show you how strong your password is
+## Built With
+- 🧰 React — UI framework
+- 🧭 React Router — For routing
+- 💾 localStorage — To persist user data
 
-After successful registration, head to the Login page
-
-Enter your credentials to access the Dashboard
-
-Built With
-🧰 React — UI framework
-
-🧭 React Router — For routing
-
-💾 localStorage — To persist user data
-
-Made with ❤️
+# Made with ❤️
 
 
+
+
+## Installation
+
+To get the project running locally:
+
+```bash
+git clone https://github.com/your-username/signup-login-app.git
+cd signup-login-app
+npm install
+npm start
 
